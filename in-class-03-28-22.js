@@ -1,4 +1,4 @@
-//-----------------------------Virtual / In-Class (03/28/22)------------------------
+//-----------------------------------------------------------In-Class (03/28/22)------------------------------------
 /**
  * Review from Last Friday
  * ---------------------------------
@@ -90,7 +90,7 @@
  * that variable should be printed to the screen within the 
  * following sentence:
  * 
- * "The current value is [REMAINING VAL?UE]"
+ * "The current value is [REMAINING VALUE]"
  * 
  * and so on until all of the remaining values have been printed in that sentence.
  * 
@@ -101,42 +101,44 @@
  * 
  */
 //---------------------------------BEGIN--------------------------------------------------
+//1st.) Create the two arrays that will be passed in:
 
-//pt.1) Create function with two arrays as parameters 
-const combInation = (firstArray = [], secondArray = []) => {
-    const newArray = [...firstArray, ...secondArray];
-    //pt.2) Save the first three items of the new array as variables
-    const [number1, number2, number3, ...leftOvers] = newArray;
-    //pt.3) The remaining items should be saved into an all new variable [SEE LINE ABOVE]
+// const breakfast = ["waffles", "cheese eggs", "grits", "grapfruit", "coffee", "pineappele orange juice"]; //<-- firstArray
+// const dinner = ["mozzerla stick", "loaded potato skin", "steak", "grilled shrimp scampi", "strong drink"]; //<-- secondArray
 
-    //NOTE: added this part to attempt to get rid of the three undefined(s) the show up in the second test
-    console.log(`
-    The First three items are:
-    -------------------------------
-    ${number1}, 
-    ${number2}, 
-    and ${number3}
-    -------------------------------\n`);
+// //2nd.) Create function with two arrays as parameters:
+// const myMenu = (firstArray = [], secondArray = []) => {
+//     const newArray = [...firstArray, ...secondArray];
+//     //3rd) Save the first three items of the new array as variables:
+//     const [number1, number2, number3, ...leftOvers] = newArray;
+//     //4th) The remaining items should be saved into an all new variable [SEE LINE ABOVE]
 
-    //NOTE: added this part to try an filter out the undefined values in my out put
-    const layers = newArray.filter(topThree => topThree != undefined);
+//     //NOTE: added this part to print the first three variables
+//     console.log(`
+//     The First three items are:
+//     -------------------------------
+//         ${number1}, ${number2}, & ${number3}\n`);
 
-    for (let i=0; i<layers.length; i++){
-        if (leftOvers[i] == undefined){
-            continue;
-        }else{
-            console.log(`The current remaining value is: ${leftOvers[i]}s\n`); //<-- "s" is added to remaining values
-        }
-    }
-    //pt.4) All remaining variables should have an "s" added to the end of them [SEE ABOVE]
-    //pt.5) Finally, all remaining values should be printed starting with "The Current Remaining Value is: " [SEE ABOVE]
-}
+//     //NOTE: added this part to try an filter out the undefined values in outputs
+//     const layers = newArray.filter(bottomThree => bottomThree != undefined);
+
+//     console.log(`
+//     The current remaining value(s) are: 
+//     ----------------------------------`)
+//     for (let i=0; i<layers.length; i++){
+//         if (leftOvers[i] == undefined){
+//             continue;
+//         }else{
+//             console.log(`       ${i}.) ${leftOvers[i]}s\n`); //<-- This is where the "s" is added
+//         }
+//     }
+//     //5th) All remaining variables should have an "s" added to the end of them [SEE ABOVE]
+//     //6th) Finally, all remaining values should be printed starting with "The Current Remaining Value is: " [SEE ABOVE]
+// }
 
 
-const breakfast = ["bacon", "cheese eggs", "grits", "grapfruit", "coffee", "pineappele orange juice"]; //<-- firstArray
-const dinner = ["mozzerla stick", "loaded potato skin", "steak", "grilled shrimp scampi", "strong drink"]; //<-- secondArray
+// myMenu(breakfast, dinner); //<--instance of function myMenu, passing in dinner and breakfast arrays
 
-combInation(breakfast, dinner);
 //TEST 1:
 //Expectation: bacon, cheese eggs, and grits should be the first three values, while everything else falls into "...leftOvers".
 
@@ -166,7 +168,7 @@ combInation(breakfast, dinner);
 //TEST 3: After using the .filter() method before the for loop 
 
 /**
- * Return
+ * Return:
  * -------------------
  *     The First three items are:
     -------------------------------
@@ -184,7 +186,117 @@ The current remaining value is: steaks
 The current remaining value is: grilled shrimp scampis
 The current remaining value is: strong drinks
  */
+
+//TEST 4: After modifying the for loop and adding an additional string
+
+/**
+ * Return:
+ * -------------------
+ * 
+ *     The First three items are:
+    -------------------------------
+        waffles, cheese eggs, & grits
+
+
+    The current remaining value(s) are: 
+    ----------------------------------
+       0.) grapfruits
+
+       1.) coffees
+
+       2.) pineappele orange juices
+
+       3.) mozzerla sticks
+
+       4.) loaded potato skins
+
+       5.) steaks
+
+       6.) grilled shrimp scampis
+
+       7.) strong drinks
+ */
+//----------------------------------INSTRUCTOR SOLUTION--------------------------------------------------
+
+function arrayMachine (arr1, arr2){
+    let combinedArray = [...arr1, ...arr2];
+    let [val1, val2, val3, ...remainingVals] = combinedArray;
+    console.log(`\n${combinedArray}\n`);
+    //map will iterate over all array values in remaingVals
+    //then it will modify the values with what
+    //you do in the function.
+    //Finally, it'll return an array with the modified values
+    remainingVals = remainingVals.map((currentValue) => { //<-- were supposed to use .map() to add the "s" 
+        return `${currentValue}s`;
+    })
+
+    remainingVals.forEach((val) => {
+        console.log(`The current value is ${val}\n`); //<--Use .forEach() instead of a for loop
+    })
+
+}
+
+arrayMachine([1,2,3,4,5], [6,7,8,9,10]);
+
+/**
+ * Test 1 Return:
+ ---------------- 
+ [
+  1, 2, 3, 4,  5,
+  6, 7, 8, 9, 10
+]
+[
+  '1s',  '2s', '3s',
+  '4s',  '5s', '6s',
+  '7s',  '8s', '9s',
+  '10s'
+]
+ */
+
+//----------------------------------
+
+/**
+ * Test 2 Return:
+ * --------------
+[
+  1, 2, 3, 4,  5,
+  6, 7, 8, 9, 10
+]
+The current value is 4s
+The current value is 5s
+The current value is 6s
+The current value is 7s
+The current value is 8s
+The current value is 9s
+The current value is 10s
+ */
+
+/**
+ * Test 3 Return:
+ * ---------------
+ * 
+ 1,2,3,4,5,6,7,8,9,10
+
+The current value is 4s
+
+The current value is 5s
+
+The current value is 6s
+
+The current value is 7s
+
+The current value is 8s
+
+The current value is 9s
+
+The current value is 10s
+ * 
+ */
+
+
 //----------------------------------END--------------------------------------------------
+
+
 
 
 
