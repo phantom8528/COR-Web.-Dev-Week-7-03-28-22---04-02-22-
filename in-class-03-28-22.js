@@ -218,25 +218,27 @@ The current remaining value is: strong drinks
  */
 //----------------------------------INSTRUCTOR SOLUTION--------------------------------------------------
 
-function arrayMachine (arr1, arr2){
-    let combinedArray = [...arr1, ...arr2];
-    let [val1, val2, val3, ...remainingVals] = combinedArray;
-    console.log(`\n${combinedArray}\n`);
-    //map will iterate over all array values in remaingVals
-    //then it will modify the values with what
-    //you do in the function.
-    //Finally, it'll return an array with the modified values
-    remainingVals = remainingVals.map((currentValue) => { //<-- were supposed to use .map() to add the "s" 
-        return `${currentValue}s`;
-    })
+// function arrayMachine (arr1, arr2){
+//     let combinedArray = [...arr1, ...arr2];
+//     let [val1, val2, val3, ...remainingVals] = combinedArray;
+//     console.log(`\n${combinedArray}\n`);
 
-    remainingVals.forEach((val) => {
-        console.log(`The current value is ${val}\n`); //<--Use .forEach() instead of a for loop
-    })
+//     //map will iterate over all array values in remaingVals
+//     //then it will modify the values with what
+//     //you do in the function.
+//     //Finally, it'll return an array with the modified values
 
-}
+//     remainingVals = remainingVals.map((currentValue) => { //<-- were supposed to use .map() to add the "s" 
+//         return `${currentValue}s`;
+//     })
 
-arrayMachine([1,2,3,4,5], [6,7,8,9,10]);
+//     remainingVals.forEach((val) => {
+//         console.log(`The current value is ${val}\n`); //<--Use .forEach() instead of a for loop
+//     })
+
+// }
+
+// arrayMachine([1,2,3,4,5], [6,7,8,9,10]);
 
 /**
  * Test 1 Return:
@@ -296,16 +298,186 @@ The current value is 10s
 
 //----------------------------------END--------------------------------------------------
 
+//-----------------------------------------------------------HomePractice (03/28/22)------------------------------------
+
+//---------------------------ES6 JS Classes--------------------------------------
+
+//Ex.) From w3Schools
+
+// class Car {
+//     constructor(brand){
+//         this.brand = brand;
+//     }
+//     present (){
+//         return ` I have a ${this.brand}`;
+//     }
+// }
+// let myCar = new Car("Toyota");//<-- Toyota passed into brand paramter
+// console.log(myCar.present()); // Return:  I have a Toyota
+
+//---------------------------ES6 JS Class Inheritance--------------------------------------
+
+//Ex.) From w3Schools
+
+// class Model extends Car{
+//     constructor(brand, model){
+//         super(brand); //super must be declared first
+//         this.model = model;
+//     }
+//     show(){
+//         return `${this.present()} ${this.model} `;
+
+//     }
+// }
+// let myNewCar = new Model ("Toyota", "Camry");
+// console.log(myNewCar.show()); //Returns:  I have a Toyota Camry 
+
+//---------------------------ES6 JS For..of..Loops--------------------------------------
+
+// const forLoopPractice = (desiredString) => {
+//     for (let x of desiredString){
+//         console.log(x);
+//     }
+// }
+// console.log(forLoopPractice("Gabriel"));
+/**
+ * Return:
+ * -------------------
+G
+a
+b
+r
+i
+e
+l
+undefined
+ */
+
+//---------------------------------ES6 JS Proxies------------------------------------------------
+
+//NOTE: Every Proxy Object needs a handler and a target
+//NOTE: Proxies are used for validation, log property accesses, formatting, and sanitizing inputs
+//Ex.) Regular Proxy
+
+// const target1 = {item1: "cheese", item2: "eggs"}; //<-- Target 
+
+// const handler1 = {};//<-- Handler
+
+// const proxy1 = new Proxy(target1, handler1); //<-- Proxy Declaration
+
+// //using the proxy 
+// console.log(proxy1.item1); // Return: cheese
+
+//Ex.2) Procy get() handler - accesses properties of the target 
+// const example2 = {item3: "blue", item4: "red"};
+// const handler2 = {get(target, prop, receiver){
+//     return "organge";
+// }};
+// const proxy2 = new Proxy(example2, handler2);
+// console.log(proxy2.item3);// Returns: orange
+// console.log(proxy2.item4);// Returns: orange
+//NOTE: reassigns the values of all the keys in the target object
+
+//Ex.3) Proxy Reflect() class
+
+// let target3 = {item6: "Yellow Car", item7: "Red Car"};
+
+// let handler3 = {get(target, prop, receiver){
+//     if (prop === "item6"){
+//         return `Blue Car`;
+//     }
+//     return Reflect.get(...arguments); //<-- 
+    
+//     },
+// }
+// const proxy3 = new Proxy(target3, handler3);
+// console.log(proxy3.item6); //Returns: Blue Car, which replaces Yellow Car on line 383
+// console.log(proxy3.item7); //Returns: Red Car
+
+//Ex.4) 
 
 
 
 
 
+//-----------------------------------------------------------In-Class (03/29/22)----------------------------------------
+
+//---------------------------------ES6 JS Objects------------------------------------------------
 
 
+//Ex. Old Way of Constructing a Function
+// function Car (){
+//     this.running = false; //NOTE: "this." represents the object that will be created.
+//     //NOTE: running is the key, false is the value
+//     this.startEngine = function(){
+//         this.running = true;
+//     }
+//     this.color = undefined;
+// }
+// const ferrari = new Car();
+// console.log(ferrari); //Returns: Car { running: false }
+// const lambo = new Car();
+// console.log(lambo); //Return: Car { running: false }
+
+// const rankings = {first: "Jimmy", 
+//                   second: "Sandy"};
+
+// rankings.first = "Bob";
+// console.log(rankings.first); // Returns: Bob
+
+//Ex. New way (ES6)
+
+class Car {
+    constructor(paint){
+        this.running = false;
+        this.color = paint;
+
+    }
+    startEngine(){
+        this.running = true;
+    }
+}
+
+// let ferrari = new Car("Black");
+// ferrari.startEngine();
+// let lambo = new Car("Gold");
+
+// console.log(lambo);
+// console.log(ferrari);
+
+/**
+ * Return:
+ * -------------
+Car { running: false, color: 'Gold' }
+Car { running: true, color: 'Black' }
+ */
 
 
+//---------------------------------ES6 JS Class Inheritance------------------------------------------------
 
+
+//NOTE: Comment out lines 441 throug 446 first
+
+class Tesla extends Car {
+    constructor(){
+        super("black");
+        this.electric = true;
+    }
+    startEngine(){
+        this.running = "I Don't Want No Engine";
+    }
+    addFuel(){
+        this.fuelTankProperties = "electricity";
+    }
+    stopEngine(){
+        this.running = false;
+    }
+}
+
+let ride = new Tesla();
+ride.startEngine();
+ride.addFuel();
+console.log(ride);
 
 
 
