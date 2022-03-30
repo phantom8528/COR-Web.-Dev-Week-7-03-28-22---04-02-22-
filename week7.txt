@@ -1,0 +1,16 @@
+---------------------------03/28/22-----------------------------
+* Homework for Tonight
+------------------------
+Practice the following in Canvas (same place as the weekend homework or w3schools):
+template literals
+spread operator
+destructuring
+map method
+
+* Pre-Reading for Tomorrow
+---------------------------
+ES6 Class Inheritance in Canvas (in the ES6 module in Canvas or w3schools)
+
+---------------------------03/29/22-----------------------------
+
+
