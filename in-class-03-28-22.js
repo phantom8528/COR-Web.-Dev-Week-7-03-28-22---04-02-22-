@@ -427,16 +427,16 @@ undefined
 
 //Ex. New way (ES6)
 
-class Car {
-    constructor(paint){
-        this.running = false;
-        this.color = paint;
+// class Car {
+//     constructor(paint){
+//         this.running = false;
+//         this.color = paint;
 
-    }
-    startEngine(){
-        this.running = true;
-    }
-}
+//     }
+//     startEngine(){
+//         this.running = true;
+//     }
+// }
 
 // let ferrari = new Car("Black");
 // ferrari.startEngine();
@@ -458,26 +458,29 @@ Car { running: true, color: 'Black' }
 
 //NOTE: Comment out lines 441 throug 446 first
 
-class Tesla extends Car {
-    constructor(){
-        super("black");
-        this.electric = true;
-    }
-    startEngine(){
-        this.running = "I Don't Want No Engine";
-    }
-    addFuel(){
-        this.fuelTankProperties = "electricity";
-    }
-    stopEngine(){
-        this.running = false;
-    }
-}
+// class Tesla extends Car {
+//     constructor(){
+//         super("black");
+//         this.electric = true;
+//     }
+//     startEngine(){
+//         this.running = "I Don't Want No Engine";
+//     }
+//     addFuel(){
+//         this.fuelTankProperties = "electricity";
+//     }
+//     stopEngine(){
+//         this.running = false;
+//     }
+// }
 
-let ride = new Tesla();
-ride.startEngine();
-ride.addFuel();
-console.log(ride);
+// let ride = new Tesla();
+// ride.startEngine();
+// ride.addFuel();
+// console.log(ride);
+
+
+
 
 
 
