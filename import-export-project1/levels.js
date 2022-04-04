@@ -40,7 +40,7 @@
 let game1Level0 = [
     "mountainLeft", 
     "mountainRight", 
-    holeInGround:{option1: "jumpIntoHole()",option2: "endProgram()"},
+    holeInGround: {option1: "jumpIntoHole()",option2: "endProgram()"},
     "pastMountainLeft()",
     "pastMountainRight()"
 ];

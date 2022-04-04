@@ -72,6 +72,7 @@
 // console.log(y); //Returns two
 // console.log(z); //Returns three
 
+
 //----------------Assigning Default Values--------------
 
 //Ex.1)
