@@ -13,7 +13,22 @@ ES6 Class Inheritance in Canvas (in the ES6 module in Canvas or w3schools)
 
 ---------------------------03/29/22-----------------------------
 
----------------------------03/30/22-----------------------------
+---------------------------03/31/22-----------------------------
+-->Had to install liveserver in order to experiment with import export
+-->Simulated Super Mario 64 in order to demonstrate import/export and destructuring with the homework
+-->Did some practice on backend user prompt
+
+---------------------------04/01/22-----------------------------
+-->Demo in class was unsuccessful at demonstrating frontend import/export
+-->Repairs made post-demo were successful. 
+-->Super Mario simulation currently only works with door1.js in terms of going to other worlds
+-->door2.js, which is reserved for the mario cart sim, is still under construction
+-->Review and practice will be done by doing the following:
+
+            Create a game that uses object/array destructuring in order to navigate and pull items
+
+
+
 
 
 
